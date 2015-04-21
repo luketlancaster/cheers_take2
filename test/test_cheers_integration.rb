@@ -2,8 +2,7 @@ require 'minitest/autorun'
 
 class TestCheersIntegration < MiniTest::Unit::TestCase
 
-  def test_help_message
-    skip
+  def test_no_input_help_message
     output = `./cheers`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -13,20 +12,19 @@ EOS
   end
 
   def test_one_valid_name
-    skip
     output = `./cheers Abby`
     expected = <<EOS
 Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 EOS
+    #expected.chomp!
     assert_equal expected, output
   end
 
   def test_one_valid_name_with_hyphen
-    skip
     output = `./cheers Abby-Sue`
     expected = <<EOS
 Give me an... A
@@ -36,7 +34,7 @@ Give me a... Y
 Give me a... S
 Give me an... U
 Give me an... E
-Abby-Sue’s just GRAND!
+Abby-Sue's just GRAND!
 EOS
     assert_equal expected, output
   end
@@ -94,7 +92,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 Awesome!  Your birthday is in 127 days! Happy Birthday in advance!
 EOS
@@ -142,7 +140,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 Awesome!  Your birthday is in 127 days! Happy Birthday in advance!
 EOS
@@ -157,7 +155,7 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Abby’s just GRAND!
+Abby's just GRAND!
 
 Awesome!  Your birthday was 26 days ago! Happy belated birthday!
 EOS

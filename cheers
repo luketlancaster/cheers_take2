@@ -1,5 +1,24 @@
 #!/usr/bin/env ruby
 
-#if ARGV == []
-  #puts "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`\n"
-#end
+arguments = ARGV
+
+
+if arguments == []
+  puts "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`\n"
+end
+
+name = arguments[0]
+
+def name_checker(name)
+  print_name = name
+  an_letters = "AEIOU"
+  name = name.sub(/-/, '') if /-/.match(name)
+  name.each_char do |letter|
+    letter.upcase!
+    article = an_letters.include?(letter) ? "an" : "a"
+    print "Give me #{article}... #{letter}\n"
+  end
+  print print_name.rstrip + "'s just GRAND!\n"
+end
+
+name_checker(name)
