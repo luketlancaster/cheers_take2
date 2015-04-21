@@ -4,15 +4,17 @@ The Ruby cheers exercise (see: luketlancaster/cheers), this time 3 weeks into le
 ## Instructions
 (What we're supposed to do)
 
+* `chmod +x filename`
+
 ## Specifications, for non-interactive version of cheers
 
 ### Help Usage
 
-Run the program by running `/.cheers.rb`
+Run the program by running `/.cheers`
 
 The program will print out:
 
-> I'd cheer for you, if onlu I knew who you were :\
+> I'd cheer for you, if only I knew who you were :(
 
 > Try again with `./cheers.rb [Name] [MM/DD Birthday]`
 
@@ -59,7 +61,7 @@ If there was no input for birthday, the program instead says:
 
 ## Specifications, for interactive version of cheers
 
-Start the program by running `./cheers.rb`
+Start the program by running `./cheers`
 
 The program should ask:
 
