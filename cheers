@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
 if ARGV == []
-  print "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`\n"
+  puts "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`\n"
 end
