@@ -3,9 +3,12 @@ require 'date'
 
 arguments = ARGV
 
-def puts_help_message
+def exit_with_help_message
   puts "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`"
+  exit
 end
+
+exit_with_help_message if arguments.empty?
 
 if arguments.length == 1
   name = arguments[0]
@@ -23,7 +26,7 @@ def name_parser(name)
     article = an_letters.include?(letter) ? "an" : "a"
     print "Give me #{article}... #{letter}\n"
   end
-  print print_name.rstrip + "'s just GRAND!\n"
+  print print_name + "'s just GRAND!\n"
 end
 
 def date_parser(bd)
@@ -35,14 +38,12 @@ end
 
 def date_finder(bd)
   birthday = Date.parse(bd)
-  now = DateTime.now
-  current = now.month.to_s << '/' << now.day.to_s
-  today = Date.parse(current)
+  now_date_object = DateTime.now
+  current_date = now_date_object.month.to_s << '/' << now_date_object.day.to_s
+  today = Date.parse(current_date)
 
   if (birthday - today) < 0
-    days_away = (birthday - today).to_s
-    days_away.sub!(/-/, '')
-    days_away = days_away.to_i
+    days_away = (birthday - today).to_s.sub!(/-/, '').to_i
     puts "\nAwesome! Your birthday was #{days_away} days ago! Happy belated birthday!"
   elsif (birthday - today) > 0
     days_away = (birthday - today).to_i
@@ -50,12 +51,15 @@ def date_finder(bd)
   end
 end
 
-if /[a-zA-Z]/.match(name).nil? or arguments == [] or date_parser(birthday)
-  puts_help_message
+cheer_name = name.upcase.gsub(/[^A-Z]/, '')
+
+exit_with_help_message if cheer_name.empty?
+exit_with_help_message if date_parser(birthday)
+
+name_parser(name)
+if birthday != ""
+  date_finder(birthday)
 else
-  name_parser(name)
-  if birthday != ""
-    date_finder(birthday)
-  end
+  puts "\nI would wish you a Happy Birthday, if I knew when that was!"
 end
 
