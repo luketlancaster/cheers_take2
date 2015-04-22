@@ -19,6 +19,8 @@ Give me a... B
 Give me a... B
 Give me a... Y
 Abby's just GRAND!
+
+I would wish you a Happy Birthday, if I knew when that was!
 EOS
     #expected.chomp!
     assert_equal expected, output
@@ -35,6 +37,8 @@ Give me an... S
 Give me a... U
 Give me an... E
 Abby-Sue's just GRAND!
+
+I would wish you a Happy Birthday, if I knew when that was!
 EOS
     assert_equal expected, output
   end
@@ -50,6 +54,8 @@ Give me an... S
 Give me a... U
 Give me an... E
 Abby Sue's just GRAND!
+
+I would wish you a Happy Birthday, if I knew when that was!
 EOS
     assert_equal expected, output
   end
