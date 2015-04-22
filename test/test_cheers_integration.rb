@@ -187,10 +187,8 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-Awesome! Your birthday is in 234 days! Happy birthday in advance!
+Awesome! Your birthday is in 234 days! Happy Birthday in advance!
 EOS
-
     assert_equal expected, output
-
   end
 end
