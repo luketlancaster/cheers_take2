@@ -10,6 +10,9 @@ if arguments.length == 1
 elsif arguments.length == 2
   name = arguments[0]
   birthday = arguments[1]
+elsif arguments.length > 2
+  name = arguments[0]
+  birthday = arguments[1]
 end
 
 def name_parser(name)
@@ -25,7 +28,8 @@ def name_parser(name)
 end
 
 def date_parser(bd)
-  if /[a-zA-Z]/.match(bd)
+  month = bd[0] + bd [1] if bd != ""
+  if /[a-zA-Z]/.match(bd) or bd.length > 5 or month.to_i > 12
     true
   end
 end

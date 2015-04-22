@@ -1,4 +1,4 @@
-require 'minitest/autorun'
+require_relative 'helper'
 
 class TestCheersIntegration < MiniTest::Unit::TestCase
 
@@ -114,7 +114,6 @@ EOS
   end
 
   def test_two_args_invalid_name_valid_birthday
-    skip
     output = `./cheers #25 12/23`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -125,7 +124,6 @@ EOS
   end
 
   def test_myy_birthday
-    skip
     output = `./cheers Abby 8/25`
     expected = <<EOS
 Give me an... A
@@ -134,13 +132,12 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-Awesome! Your birthday is in 127 days! Happy Birthday in advance!
+Awesome! Your birthday is in 125 days! Happy Birthday in advance!
 EOS
     assert_equal expected, output
   end
 
   def test_birthday_already_passed
-    skip
     output = `./cheers Abby 3/25`
     expected = <<EOS
 Give me an... A
@@ -149,13 +146,12 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-Awesome! Your birthday was 26 days ago! Happy belated birthday!
+Awesome! Your birthday was 28 days ago! Happy belated birthday!
 EOS
     assert_equal expected, output
   end
 
   def test_birthday_instead_of_name
-    skip
     output = `./cheers 3/35 3/25`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -165,7 +161,6 @@ EOS
   end
 
   def test_invalid_date_ddmm
-    skip
     output = `./cheers Abby 15/03`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -175,7 +170,6 @@ EOS
   end
 
   def test_invalid_date_ddmmyy
-    skip
     output = `./cheers Abby 15/03/1987`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -184,4 +178,19 @@ EOS
     assert_equal expected, output
   end
 
+  def test_ignore_more_than_two_arguments
+    output = `./cheers Abby 12/12 Joe`
+    expected = <<EOS
+Give me an... A
+Give me a... B
+Give me a... B
+Give me a... Y
+Abby's just GRAND!
+
+Awesome! Your birthday is in 234 days! Happy birthday in advance!
+EOS
+
+    assert_equal expected, output
+
+  end
 end
