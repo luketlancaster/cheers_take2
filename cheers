@@ -1,15 +1,17 @@
 #!/usr/bin/env ruby
 
 arguments = ARGV
+help = "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`"
 
-
-if arguments == []
-  puts "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`\n"
+if arguments.length == 1
+  name = arguments[0]
+  birthday = ""
+elsif arguments.length == 2
+  name = arguments[0]
+  birthday = arguments[1]
 end
 
-name = arguments[0]
-
-def name_checker(name)
+def name_parser(name)
   print_name = name
   an_letters = "AEIOU"
   name = name.sub(/-/, '') if /-/.match(name)
@@ -21,4 +23,17 @@ def name_checker(name)
   print print_name.rstrip + "'s just GRAND!\n"
 end
 
-name_checker(name)
+def date_parser(birthday)
+  if /\d{3,4}/.match(birthday).nil? and birthday != ""
+    return true
+  else
+    return nil
+  end
+end
+
+if /[a-zA-Z]/.match(name).nil? or arguments == [] or date_parser(birthday)
+  puts help
+else
+  name_parser(name)
+end
+

@@ -51,7 +51,6 @@ EOS
   end
 
   def test_one_arg_all_non_word_characters
-    skip
     output = `./cheers $@^@`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -62,7 +61,6 @@ EOS
   end
 
   def test_one_arg_empty_string
-    skip
     output = `./cheers ""`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -73,7 +71,6 @@ EOS
   end
 
   def test_one_arg_empty_string_with_whitespace
-    skip
     output = `./cheers " "`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -100,7 +97,6 @@ EOS
   end
 
   def test_two_invalid_arguments
-    skip
     output = `./cheers 2344 afsae`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -111,13 +107,11 @@ EOS
   end
 
   def test_two_args_valid_name_invalid_birthday
-    skip
     output = `./cheers Luke we/23`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
-I couldn't understand that. Could you give that to me in mm/dd format next time?
+Try again with `./cheers.rb [Name] [MM/DD Birthday]`
 EOS
-
     assert_equal expected, output
   end
 
@@ -157,7 +151,7 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-Awesome!  Your birthday was 26 days ago! Happy belated birthday!
+Awesome! Your birthday was 26 days ago! Happy belated birthday!
 EOS
     assert_equal expected, output
   end
