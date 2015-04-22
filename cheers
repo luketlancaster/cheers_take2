@@ -2,7 +2,10 @@
 require 'date'
 
 arguments = ARGV
-help = "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`"
+
+def help
+  puts "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`"
+end
 
 if arguments.length == 1
   name = arguments[0]
@@ -52,7 +55,7 @@ def date_finder(bd)
 end
 
 if /[a-zA-Z]/.match(name).nil? or arguments == [] or date_parser(birthday)
-  puts help
+  help
 else
   name_parser(name)
   if birthday != ""
