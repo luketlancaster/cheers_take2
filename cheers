@@ -3,27 +3,23 @@ require 'date'
 
 arguments = ARGV
 
-def help
+def puts_help_message
   puts "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`"
 end
 
 if arguments.length == 1
   name = arguments[0]
   birthday = ""
-elsif arguments.length == 2
-  name = arguments[0]
-  birthday = arguments[1]
-elsif arguments.length > 2
+else
   name = arguments[0]
   birthday = arguments[1]
 end
 
 def name_parser(name)
   print_name = name
-  an_letters = "AEIOU"
-  name = name.sub(/-/, '') if /-/.match(name)
-  name.each_char do |letter|
-    letter.upcase!
+  an_letters = "AEFHILMNORSX"
+  cheer_name = name.upcase.gsub(/[^A-Z]/, '')
+  cheer_name.each_char do |letter|
     article = an_letters.include?(letter) ? "an" : "a"
     print "Give me #{article}... #{letter}\n"
   end
@@ -55,7 +51,7 @@ def date_finder(bd)
 end
 
 if /[a-zA-Z]/.match(name).nil? or arguments == [] or date_parser(birthday)
-  help
+  puts_help_message
 else
   name_parser(name)
   if birthday != ""

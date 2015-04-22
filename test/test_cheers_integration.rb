@@ -31,13 +31,29 @@ Give me an... A
 Give me a... B
 Give me a... B
 Give me a... Y
-Give me a... S
-Give me an... U
+Give me an... S
+Give me a... U
 Give me an... E
 Abby-Sue's just GRAND!
 EOS
     assert_equal expected, output
   end
+
+  def test_one_valid_name_with_space
+    output = `./cheers "Abby Sue"`
+    expected = <<EOS
+Give me an... A
+Give me a... B
+Give me a... B
+Give me a... Y
+Give me an... S
+Give me a... U
+Give me an... E
+Abby Sue's just GRAND!
+EOS
+    assert_equal expected, output
+  end
+
 
   def test_one_valid_birthday
     output = `./cheers 03/15`
