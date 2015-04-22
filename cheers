@@ -18,11 +18,15 @@ else
   birthday = arguments[1]
 end
 
+$cheer_name = name.upcase.gsub(/[^A-Z]/, '')
+
+exit_with_help_message if $cheer_name.empty?
+
+
 def name_parser(name)
   print_name = name
   an_letters = "AEFHILMNORSX"
-  cheer_name = name.upcase.gsub(/[^A-Z]/, '')
-  cheer_name.each_char do |letter|
+  $cheer_name.each_char do |letter|
     article = an_letters.include?(letter) ? "an" : "a"
     print "Give me #{article}... #{letter}\n"
   end
@@ -51,9 +55,6 @@ def date_finder(bd)
   end
 end
 
-cheer_name = name.upcase.gsub(/[^A-Z]/, '')
-
-exit_with_help_message if cheer_name.empty?
 exit_with_help_message if date_parser(birthday)
 
 name_parser(name)
