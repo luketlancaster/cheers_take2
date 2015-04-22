@@ -191,6 +191,16 @@ EOS
     assert_equal expected, output
   end
 
+  def test_invalid_date
+    output = `./cheers Abby 15/55`
+    expected = <<EOS
+I'd cheer for you, if only I knew who you were :(
+Try again with `./cheers.rb [Name] [MM/DD Birthday]`
+EOS
+    assert_equal expected, output
+  end
+
+
   def test_invalid_date_ddmmyy
     output = `./cheers Abby 15/03/1987`
     expected = <<EOS
