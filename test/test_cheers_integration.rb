@@ -40,7 +40,6 @@ EOS
   end
 
   def test_one_valid_birthday
-    skip
     output = `./cheers 03/15`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
@@ -82,7 +81,6 @@ EOS
 
 
   def test_valid_name_mmyy_birthday
-    skip
     output = `./cheers Abby 08/25`
     expected = <<EOS
 Give me an... A
@@ -91,7 +89,7 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-Awesome!  Your birthday is in 127 days! Happy Birthday in advance!
+Awesome! Your birthday is in 125 days! Happy Birthday in advance!
 EOS
     assert_equal expected, output
   end
@@ -136,7 +134,7 @@ Give me a... B
 Give me a... Y
 Abby's just GRAND!
 
-Awesome!  Your birthday is in 127 days! Happy Birthday in advance!
+Awesome! Your birthday is in 127 days! Happy Birthday in advance!
 EOS
     assert_equal expected, output
   end

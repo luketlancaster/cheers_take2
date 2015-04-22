@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require 'date'
 
 arguments = ARGV
 help = "I'd cheer for you, if only I knew who you were :(\nTry again with `./cheers.rb [Name] [MM/DD Birthday]`"
@@ -23,11 +24,26 @@ def name_parser(name)
   print print_name.rstrip + "'s just GRAND!\n"
 end
 
-def date_parser(birthday)
-  if /\d{3,4}/.match(birthday).nil? and birthday != ""
-    return true
-  else
-    return nil
+def date_parser(bd)
+  if /[a-zA-Z]/.match(bd)
+    true
+  end
+end
+
+def date_finder(bd)
+  birthday = Date.parse(bd)
+  now = DateTime.now
+  current = now.month.to_s << '/' << now.day.to_s
+  today = Date.parse(current)
+
+  if (birthday - today) < 0
+    days_away = (birthday - today).to_s
+    days_away.sub!(/-/, '')
+    days_away = days_away.to_i
+    puts "\nAwesome! Your birthday was #{days_away} days ago! Happy belated birthday!"
+  elsif (birthday - today) > 0
+    days_away = (birthday - today).to_i
+    puts "\nAwesome! Your birthday is in #{days_away} days! Happy Birthday in advance!"
   end
 end
 
@@ -35,5 +51,8 @@ if /[a-zA-Z]/.match(name).nil? or arguments == [] or date_parser(birthday)
   puts help
 else
   name_parser(name)
+  if birthday != ""
+    date_finder(birthday)
+  end
 end
 
