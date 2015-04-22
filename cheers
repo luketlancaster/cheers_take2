@@ -16,6 +16,11 @@ if arguments.length == 1
 else
   name = arguments[0]
   birthday = arguments[1]
+  begin
+    Date.parse(birthday)
+  rescue
+    exit_with_help_message
+  end
 end
 
 $cheer_name = name.upcase.gsub(/[^A-Z]/, '')
@@ -34,8 +39,7 @@ def name_parser(name)
 end
 
 def date_parser(bd)
-  month = bd[0] + bd [1] if bd != ""
-  if /[a-zA-Z]/.match(bd) or bd.length > 5 or month.to_i > 12
+  if /[a-zA-Z]/.match(bd) or bd.length > 5
     true
   end
 end
