@@ -127,7 +127,7 @@ EOS
   end
 
   def test_two_args_valid_name_invalid_birthday
-    output = `./cheers Luke we/23`
+    output = `./cheers Luke @/23a`
     expected = <<EOS
 I'd cheer for you, if only I knew who you were :(
 Try again with `./cheers.rb [Name] [MM/DD Birthday]`

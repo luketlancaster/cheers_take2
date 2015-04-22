@@ -39,7 +39,8 @@ def name_parser(name)
 end
 
 def date_parser(bd)
-  if /[a-zA-Z]/.match(bd) or bd.length > 5
+  date = bd.gsub(/\//, '')
+  if /[a-zA-Z\W]/.match(date) or date.length > 4
     true
   end
 end
