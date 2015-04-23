@@ -52,7 +52,7 @@ def date_finder(bd)
   today = Date.parse(current_date)
 
   if (birthday - today) < 0
-    days_away = (birthday - today).to_s.sub!(/-/, '').to_i
+    days_away = (birthday - today).to_s.sub(/-/, '').to_i
     puts "\nAwesome! Your birthday was #{days_away} days ago! Happy belated birthday!"
   elsif (birthday - today) > 0
     days_away = (birthday - today).to_i
