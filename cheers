@@ -58,7 +58,7 @@ def date_finder(bd)
     days_away = (birthday - today).to_i
     puts "\nAwesome! Your birthday is in #{days_away} days! Happy Birthday in advance!"
   else
-    puts "Awesome! Your birthday is today! Eat some cake for Glados and I!"
+    puts "\nAwesome! Your birthday is today! Happy birthday!"
   end
 end
 
